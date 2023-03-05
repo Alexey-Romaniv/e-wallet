@@ -17,7 +17,7 @@ const initialState = {
   token: null,
   isLoading: false,
   error: null,
-  isFetchingCurrentUser: false,
+  isFetching: false,
   isAuth: false,
 };
 
@@ -27,12 +27,12 @@ const authPersistConfig = {
   whitelist: ["token"],
 };
 
-const handlePending = (state) => {
+export const handlePending = (state) => {
   state.isLoading = true;
   state.error = null;
 };
 
-const handleRejected = (state, { payload }) => {
+export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
 };

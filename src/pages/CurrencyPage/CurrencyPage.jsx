@@ -1,5 +1,5 @@
 const CurrencyPage = () => {
-  return;
+  return <div>CurrencyPage</div>;
 };
 
 export default CurrencyPage;
