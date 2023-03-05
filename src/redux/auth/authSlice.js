@@ -13,6 +13,7 @@ const initialState = {
     name: "",
     email: "",
     avatarUrl: "",
+    wallet: 0,
   },
   token: null,
   isLoading: false,
@@ -70,6 +71,7 @@ const authSlice = createSlice({
           name: "",
           email: "",
           avatarUrl: "",
+          wallet: 0
         };
       })
       .addCase(fetchCurrentUser.pending, (state) => {
