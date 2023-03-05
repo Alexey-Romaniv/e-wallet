@@ -20,25 +20,25 @@ import StatisticPage from "../pages/StatisticPage/StatisticPage";
 
 const App = () => {
     return (
-        // <Routes>
-        //     <Route index path="/login" element={<PublicRoute redirectTo='/' component={<LoginPage/>}/>}/>
-        //     <Route path="/register" element={<PublicRoute redirectTo='/' component={<RegisterPage/>}/>}/>
-        //     <Route path="/" element={<Layout/>}>
-        //         <Route index element={<PrivateRoute redirectTo='/login' component={<HomePage/>}/>}/>
-        //         <Route  path="/statistics" element={<PrivateRoute redirectTo='/login' component={<StatisticPage/>}/>}/>
-        //         <Route path='/currency' element={<PrivateRoute redirectTo='/login' component={<CurrencyPage/>} />}/>}/>
-        //     </Route>
-        // </Routes>
-
         <Routes>
-            <Route index path="/login" element={<LoginPage/>}/>
-            <Route path="/register" element={<RegisterPage/>}/>
+            <Route index path="/login" element={<PublicRoute redirectTo='/' component={<LoginPage/>}/>}/>
+            <Route path="/register" element={<PublicRoute redirectTo='/' component={<RegisterPage/>}/>}/>
             <Route path="/" element={<Layout/>}>
-                <Route index element={<HomePage/>}/>
-                <Route  path="/statistics" element={<StatisticPage/>}/>
-                <Route path='/currency' element={<CurrencyPage/>}/>
+                <Route index element={<PrivateRoute redirectTo='/login' component={<HomePage/>}/>}/>
+                <Route  path="/statistics" element={<PrivateRoute redirectTo='/login' component={<StatisticPage/>}/>}/>
+                <Route path='/currency' element={<PrivateRoute redirectTo='/login' component={<CurrencyPage/>} />}/>}/>
             </Route>
         </Routes>
+
+        // <Routes>
+        //     <Route index path="/login" element={<LoginPage/>}/>
+        //     <Route path="/register" element={<RegisterPage/>}/>
+        //     <Route path="/" element={<Layout/>}>
+        //         <Route index element={<HomePage/>}/>
+        //         <Route  path="/statistics" element={<StatisticPage/>}/>
+        //         <Route path='/currency' element={<CurrencyPage/>}/>
+        //     </Route>
+        // </Routes>
     );
 };
 

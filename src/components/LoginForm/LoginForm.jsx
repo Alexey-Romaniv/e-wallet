@@ -1,4 +1,5 @@
 import { useDispatch} from "react-redux";
+import {NavLink} from "react-router-dom";
 import {login} from "../../redux/auth/authOperations";
 
 export const LoginForm = () => {
@@ -16,7 +17,7 @@ export const LoginForm = () => {
         form.reset();
     }
 
-    return (<form onSubmit={handleSubmit}>
+    return (<><form onSubmit={handleSubmit}>
         <label>
             Email
             <input type='email' name='email'/>
@@ -26,5 +27,5 @@ export const LoginForm = () => {
             <input type='password' name='password'/>
         </label>
         <button type='submit'>Login</button>
-    </form>)
+    </form><NavLink to='/register'>Register</NavLink>  </>)
 }
