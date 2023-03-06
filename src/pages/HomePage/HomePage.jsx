@@ -1,9 +1,10 @@
 import {Navigation} from "../../components/Navigation/Navigation";
+import {BalanceInfo} from "../../BalanceInfo/BalanceInfo";
 
 const HomePage = () => {
     return <>
         <div>HomePage</div>
-    <Navigation/>
+        <BalanceInfo/>
     </>;
 }
 export default HomePage;
