@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import {lazy} from "react";
+// import {lazy} from "react";
 import {PrivateRoute} from "../HOCs/PrivateRoute";
 import {PublicRoute} from "../HOCs/PublicRoute";
 
@@ -19,6 +19,7 @@ import StatisticPage from "../pages/StatisticPage/StatisticPage";
 
 
 const App = () => {
+
     return (
         <Routes>
             <Route index path="/login" element={<PublicRoute redirectTo='/' component={<LoginPage/>}/>}/>
@@ -27,19 +28,19 @@ const App = () => {
                 <Route index element={<PrivateRoute redirectTo='/login' component={<HomePage/>}/>}/>
                 <Route  path="/statistics" element={<PrivateRoute redirectTo='/login' component={<StatisticPage/>}/>}/>
                 <Route path='/currency' element={<PrivateRoute redirectTo='/login' component={<CurrencyPage/>} />}/>}/>
+
             </Route>
         </Routes>
 
-        // <Routes>
-        //     <Route index path="/login" element={<LoginPage/>}/>
-        //     <Route path="/register" element={<RegisterPage/>}/>
-        //     <Route path="/" element={<Layout/>}>
-        //         <Route index element={<HomePage/>}/>
-        //         <Route  path="/statistics" element={<StatisticPage/>}/>
-        //         <Route path='/currency' element={<CurrencyPage/>}/>
-        //     </Route>
-        // </Routes>
-    );
+    // <Routes>
+    //     <Route index path="/login" element={<LoginPage/>}/>
+    //     <Route path="/register" element={<RegisterPage/>}/>
+    //     <Route path="/" element={<Layout/>}>
+    //         <Route index element={<HomePage/>}/>
+    //         <Route  path="/statistics" element={<StatisticPage/>}/>
+    //         <Route path='/currency' element={<CurrencyPage/>}/>
+    //     </Route>
+    // </Routes>
+);
 };
-
 export default App;

@@ -1,6 +1,7 @@
 import { useDispatch} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {login} from "../../redux/auth/authOperations";
+import {MainBtn, SecondBtn} from "../CommonComponents/Buttons.styles";
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,6 @@ export const LoginForm = () => {
             Password
             <input type='password' name='password'/>
         </label>
-        <button type='submit'>Login</button>
-    </form><NavLink to='/register'>Register</NavLink>  </>)
+        <MainBtn type='submit'>Login</MainBtn>
+    </form><NavLink to='/register'><SecondBtn>Register</SecondBtn></NavLink>  </>)
 }

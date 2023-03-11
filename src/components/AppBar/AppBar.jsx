@@ -1,6 +1,9 @@
 import {useAuth} from "../../hooks/useAuth";
 import {useDispatch} from "react-redux";
 import {logout} from "../../redux/auth/authOperations";
+// import {NavLink} from "react-router-dom";
+import logo from '../../assets/icons/logo.svg'
+import {HeaderContainer, LogoImg, LogoLink, Name} from "./AppBar.styles";
 
 export const AppBar = () => {
     const {userName} = useAuth();
@@ -9,5 +12,7 @@ export const AppBar = () => {
     const logoutHandler = () => {
         dispath(logout());
     }
-    return (<div>Wallet {userName} <button onClick={logoutHandler}>Exit</button></div>);
+    return (<header><HeaderContainer><LogoLink to='/'><LogoImg src={logo} alt='logoImg'/> Wallet</LogoLink> <div><Name>{userName}</Name>
+        <button onClick={logoutHandler}>Exit</button></div>
+    </HeaderContainer></header>);
 };
