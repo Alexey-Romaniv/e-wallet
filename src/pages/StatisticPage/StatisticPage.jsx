@@ -1,7 +1,9 @@
+import {Container} from "../../components/CommonComponents/Container.styles";
+import {Navigation} from "../../components/Navigation/Navigation";
 
 const StatisticPage = () => {
-    return <>
-        <div>StatisticPage</div>
-    </>
+    return <Container>
+        <Navigation/>
+    </Container>
 }
 export default StatisticPage;

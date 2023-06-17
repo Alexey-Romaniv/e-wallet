@@ -6,14 +6,14 @@ const theme = {
         secondaryText: '#BDBDBD',
         black: '#000000',
         white: '#FFFFFF',
-        expence: '#FF6596',
+        expense: '#FF6596',
         income: '#24CCA7',
         mainBtn: '#24CCA7',
         secondaryBtn: '#4A56E2',
     },
     fonts: {
-        mainFont: "Circe",
-        titleFont: "Poppins",
+        mainFont: '"Circe", sans-serif',
+        titleFont: '"Poppins", sans-serif',
     }
 }
 

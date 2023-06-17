@@ -2,6 +2,26 @@ import {createGlobalStyle} from "styled-components";
 
 
 export const GlobalStyles = createGlobalStyle`
+  *,*:before,*:after{
+    box-sizing: border-box;
+  }
+  
+  main{
+    padding-top: 65px;
+    
+    @media screen and (min-width: 768px){
+      padding-top: 80px;
+    }
+  }
+  header{
+    background-color: #FFF;
+    padding: 15px 0;
+    
+    @media screen and (min-width: 768px){
+      padding: 20px 0;
+    }
+  }
+  
   img {
     display: block;
     max-width: 100%;
@@ -20,7 +40,8 @@ export const GlobalStyles = createGlobalStyle`
   h4,
   h5,
   h6 {
-    color: ${p => p.theme.fonts.titleFont};
+    font-family: ${p => p.theme.fonts.titleFont};
+    color: ${p => p.theme.colors.titleText};
     margin: 0;
     padding: 0;
   }
@@ -44,5 +65,11 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 18px;
     line-height: 1.5;
     letter-spacing: 0.03em;
+  }
+  
+  
+  nav .active{
+      color: #4A56E2;
+      filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
 `

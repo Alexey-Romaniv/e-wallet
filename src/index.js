@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 // import './assets/sass/index.scss';
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {persistor, store} from "./redux/store";
 import 'normalize.css'
@@ -20,11 +20,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ThemeProvider theme={theme}>
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
-                    <Router>
+                    <BrowserRouter>
                         <GlobalStyles/>
                         <App/>
                         <ToastContainer transition={Zoom} autoClose={3000} pauseOnHover={true} draggable={true}/>
-                    </Router>
+                    </BrowserRouter>
                 </PersistGate>
             </Provider>
         </ThemeProvider>

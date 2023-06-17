@@ -18,7 +18,9 @@ export const addTransaction = createAsyncThunk(
     "transactions/add",
     async (transactionData, {rejectedWithValue})=>{
         try {
-            const {data} = await axios.post("/transactions", {transactionData})
+            console.log(transactionData)
+            const {data} = await axios.post("/transactions", transactionData);
+
             return data;
         }
         catch (e){

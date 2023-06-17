@@ -1,12 +1,15 @@
+import {TransactionText} from "./Transaction.styles";
+
 export const Transaction = ({info: {date,type, category, sum, wallet,comment }}) => {
     // console.log(info)
-    console.log(date, type, category, sum, wallet)
-    return <div>
-        <p>Date: {date}</p>
-        <p>Type: {type}</p>
-        <p>Category : {category ? category : 'Regular income'}</p>
-        <p>Comment: {comment? comment: ''}</p>
-        <p>Sum: {sum}</p>
-        <p>Balance: {wallet}</p>
-    </div>
+
+   const [formattedDate, ] = date.split("T")
+    return <>
+        <TransactionText type={type}>Date: {formattedDate}</TransactionText>
+        <TransactionText type={type}>Type: {type}</TransactionText>
+        <TransactionText type={type}>Category : {category ? category : 'Regular income'}</TransactionText>
+        <TransactionText type={type}>Comment: {comment? comment: ''}</TransactionText>
+        <TransactionText type={type}>Sum: {sum}</TransactionText>
+        <TransactionText type={type}>Balance: {wallet}</TransactionText>
+    </>
 }
