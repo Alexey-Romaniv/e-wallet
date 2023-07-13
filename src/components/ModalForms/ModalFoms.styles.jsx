@@ -90,9 +90,9 @@ padding: 0 20px 8px;
 
 
 export const ModalDate = styled(ModalInput)`
-  &::placeholder{
+  &::placeholder {
     display: flex;
-  justify-content: space-between;
+    justify-content: space-between;
   }
 
   &::-webkit-calendar-picker-indicator::before {
