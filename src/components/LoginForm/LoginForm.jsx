@@ -8,8 +8,8 @@ import sprite from '../../assets/icons/InlineSprite.svg';
 import logo from '../../assets/icons/logo.svg';
 import {
     AuthBackground,
-    FormError,
     AuthWrapper,
+    FormError,
     FormWrapper,
     Input,
     InputWrapper,
@@ -34,7 +34,7 @@ export const LoginForm = () => {
                 <Formik
                     initialValues={{email: "", password: ""}}
                     validationSchema={LoginSchema}
-                    onSubmit={(values, { resetForm}) => {
+                    onSubmit={(values, {resetForm}) => {
                         dispatch(login(values))
                         resetForm();
                     }}
