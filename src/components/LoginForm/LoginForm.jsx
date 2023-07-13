@@ -33,11 +33,10 @@ export const LoginForm = () => {
                 <LogoText><LogoImg src={logo}></LogoImg>Wallet</LogoText>
                 <Formik
                     initialValues={{email: "", password: ""}}
-                    initialValues={{email: "", password: ""}}
                     validationSchema={LoginSchema}
-                    onSubmit={(values, {setSubmitting}) => {
+                    onSubmit={(values, { resetForm}) => {
                         dispatch(login(values))
-
+                        resetForm();
                     }}
                 >
                     {({isSubmitting}) => (

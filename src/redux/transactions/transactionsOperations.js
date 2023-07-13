@@ -13,6 +13,18 @@ export const fetchTransactions = createAsyncThunk(
         }
     }
 );
+export const fetchStatistic = createAsyncThunk(
+    "transactions/fetchStatistic",
+    async (date , {rejectedWithValue}) => {
+        try{
+            const {data} = await axios.get(`/transactions/filtered?month=${date?.monthValue || ''}&year=${date?.yearValue || ''}`);
+            return data
+        }
+        catch (e){
+            rejectedWithValue(e.message);
+        }
+    }
+);
 
 export const addTransaction = createAsyncThunk(
     "transactions/add",
