@@ -75,7 +75,7 @@ const authSlice = createSlice({
         };
       })
       .addCase(fetchCurrentUser.pending, (state) => {
-        state.isFetchingCurrentUser = true;
+        state.isFetching = true;
         state.isLoading = true;
         state.error = null;
       })
@@ -84,11 +84,11 @@ const authSlice = createSlice({
         state.isAuth = true;
 
         state.isLoading = false;
-        state.isFetchingCurrentUser = false;
+        state.isFetching = false;
       })
       .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
         state.error = payload;
-        state.isFetchingCurrentUser = false;
+        state.isFetching = false;
         state.isAuth = false;
         state.isLoading = false;
       }),

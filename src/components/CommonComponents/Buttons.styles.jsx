@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import sprite from "../../assets/icons/InlineSprite.svg"
 
 const Button = styled.button`
   border: none;
@@ -59,5 +58,5 @@ border-radius: 50%;
   
   /* green btn */
 
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+  box-shadow: 0 6px 15px rgba(36, 204, 167, 0.5);
 `

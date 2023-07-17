@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {Field, Form} from "formik";
 
-import dateIcon from "../../assets/icons/date.svg"
 
 
 export const ModalForm = styled(Form)`
@@ -53,7 +52,6 @@ export const SelectOption = styled.option`
   &:last-child{
     border-radius: 0 0 20px 20px;
     background: grey;
-    border-radius: 50px;
   }
 `
 export const ModalInput = styled(Field)`

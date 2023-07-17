@@ -1,11 +1,8 @@
 import styled from "styled-components";
 import plus from '../../assets/icons/plus.png'
 import minus from '../../assets/icons/minus.png'
-import sprite from '../../assets/icons/InlineSprite.svg'
-import { renderToString } from 'react-dom/server';
-import { AiOutlinePlus } from 'react-icons/ai';
 
-const plusIcon = renderToString(<AiOutlinePlus size={30} color={"white"} />);
+
 
 
 
@@ -55,7 +52,7 @@ export const ModalToogleBtn = styled.input`
     background-image: url("${minus}");
     transform: translate(101%, -50%);
     background-color: ${p => p.theme.colors.expense};
-    box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5)
+    box-shadow: 0 6px 15px rgba(255, 101, 150, 0.5)
   }
 `
 export const ToogleLabel = styled.label`

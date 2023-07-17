@@ -12,15 +12,10 @@ import {Loader} from "./Loader/Loader";
 import {Layout} from "./Layout/Layout";
 import {useAuth} from "../hooks/useAuth";
 import {fetchCurrentUser} from "../redux/auth/authOperations";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 const CurrencyPage = lazy(() => import('../pages/CurrencyPage/CurrencyPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-// const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const StatisticPage = lazy(() => import('../pages/StatisticPage/StatisticPage'));
-// import HomePage from "../pages/HomePage/HomePage";
-// import CurrencyPage from "../pages/CurrencyPage/CurrencyPage";
-// import StatisticPage from "../pages/StatisticPage/StatisticPage";
 
 
 
@@ -30,7 +25,8 @@ const App = () => {
     const {isFetching, isLoading} = useAuth();
 
     useEffect(() =>  {dispath(fetchCurrentUser())}, [dispath])
-    return isLoading || isFetching ?  <Loader/> : (
+    return <>
+    {(isLoading || isFetching) ?  <Loader/> : null}
         <Routes>
             <Route index path="/login" element={<PublicRoute redirectTo='/' component={<LoginPage/>}/>}/>
             <Route path="/register" element={<PublicRoute redirectTo='/' component={<RegisterPage/>}/>}/>
@@ -40,16 +36,6 @@ const App = () => {
                 <Route path='/currency' element={<PrivateRoute redirectTo='/login' component={<CurrencyPage/>} />}/>}/>
             </Route>
         </Routes>
-
-    // <Routes>
-    //     <Route index path="/login" element={<LoginPage/>}/>
-    //     <Route path="/register" element={<RegisterPage/>}/>
-    //     <Route path="/" element={<Layout/>}>
-    //         <Route index element={<HomePage/>}/>
-    //         <Route  path="/statistics" element={<StatisticPage/>}/>
-    //         <Route path='/currency' element={<CurrencyPage/>}/>
-    //     </Route>
-    // </Routes>
-);
+</>
 };
 export default App;
