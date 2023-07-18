@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { authPersistReducer } from "./auth/authSlice";
 import {transactionsReducer} from "./transactions/transactionsSlice";
-import {currencyReducer} from "./currency/currencySlice";
+import {currencyPersistReducer} from "./currency/currencySlice";
 
 import {
   persistStore,
@@ -18,7 +18,7 @@ export const store = configureStore({
   reducer: {
     auth: authPersistReducer,
     transactions: transactionsReducer,
-    currency: currencyReducer,
+    currency: currencyPersistReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

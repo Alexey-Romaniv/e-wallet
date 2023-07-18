@@ -1,6 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {handlePending, handleRejected} from "../auth/authSlice";
 import {fetchCurrency} from "./currencyOperations";
+import storage from 'redux-persist/lib/storage';
+import {persistReducer} from "redux-persist";
+
 
 const initialState = {
     currency: [],
@@ -8,8 +11,14 @@ const initialState = {
     error: null,
 };
 
+const currencyPersistConfig = {
+    key: "currency",
+    storage,
+    expires: 86400,
+    whitelist: ["currency"]
+};
 const currencySlice = createSlice({
-    name: "transactions",
+    name: "currency",
     initialState,
     extraReducers: builder => builder
         .addCase(fetchCurrency.pending, handlePending)
@@ -21,4 +30,4 @@ const currencySlice = createSlice({
         })
 })
 
-export const currencyReducer = currencySlice.reducer;
+export const currencyPersistReducer = persistReducer(currencyPersistConfig, currencySlice.reducer);

@@ -7,6 +7,8 @@ import minus from '../../assets/icons/minus.png'
 
 
 export const ModalToogleBtn = styled.input`
+  touch-action: manipulation;
+  
   position: relative;
   height: 40px;
   width: 80px;

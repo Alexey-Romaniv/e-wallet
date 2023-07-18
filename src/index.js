@@ -8,6 +8,9 @@ import {persistor, store} from "./redux/store";
 import 'normalize.css'
 import './assets/fonts/fonts.css'
 import 'react-toastify/dist/ReactToastify.css';
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns"; // Import the correct DateAdapter
+
 // import 'styles/main.css';
 import {PersistGate} from "redux-persist/integration/react";
 import {ToastContainer, Zoom} from "react-toastify";
@@ -17,6 +20,7 @@ import theme from './utils/theme';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
         <ThemeProvider theme={theme}>
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
@@ -28,5 +32,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </PersistGate>
             </Provider>
         </ThemeProvider>
+        </LocalizationProvider>
     </React.StrictMode>
 );

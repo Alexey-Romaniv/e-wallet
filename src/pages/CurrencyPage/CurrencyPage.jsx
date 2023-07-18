@@ -14,7 +14,26 @@ const CurrencyPage = () => {
     const currency = useSelector(selectCurrency)
     return <Container>
         <Navigation/>
-        {currency}
+        <table>
+            <tr>
+                <th>Currency</th>
+                <th>Sale</th>
+            </tr>
+            {/*<tr>{currency.map(el => <><td>{el.asset_id_base}</td> )}</tr>*/}
+            {/*<tr>{currency.map(el => <td>{el.rate}</td> )}</tr>*/}
+            {currency.map(el => {
+            return <tr>
+                <td>{el.asset_id_base}</td>
+                <td>{el.rate.toFixed(2)}</td>
+            </tr>
+            })
+            }
+        </table>
+        {/*{currency && <>*/}
+        {/*    <p>{currency[2].asset_id_base}</p>*/}
+        {/*    <p>{currency[2].asset_id_quote}</p>*/}
+        {/*    <p>{currency[2].rate}</p></>}*/}
+
     </Container>;
 };
 

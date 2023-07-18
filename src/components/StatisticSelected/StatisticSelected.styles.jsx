@@ -7,6 +7,7 @@ export const SelectDate = styled(Select)`
     width: 100%;
     border-radius: 30px;
     border: 2px solid #000;
+    background: transparent;
     cursor: pointer;
 
     &:hover {
@@ -16,6 +17,11 @@ export const SelectDate = styled(Select)`
       stroke-width: 1px;
 
     }
+  }
+  .select__control {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   //.Select__control:hover {
@@ -46,6 +52,7 @@ export const SelectDate = styled(Select)`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    background-color: transparent;
   }
   .Select__indicator {
     color: #000;
