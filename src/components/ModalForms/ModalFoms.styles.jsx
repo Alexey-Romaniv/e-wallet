@@ -62,23 +62,6 @@ padding: 0 20px 8px;
 `
 
 
-// export const ModalDate = styled(DesktopDatePicker)({
-//     '& .MuiInputBase-input': {
-//         border: 'none',
-//         borderRadius: '0',
-//     },
-//     '& .MuiInputBase-input::placeholder': {
-//         color: 'blue', // Change the placeholder text color
-//     },
-//     '& .MuiOutlinedInput-notchedOutline': {
-//         border: 'none',
-//         borderBottom: '1px solid gray', // Gray bottom border
-//         borderRadius: '0',
-//     },
-//     '& .MuiOutlinedInput-notchedOutline:hover, & .MuiOutlinedInput-notchedOutline:focus': {
-//         borderBottom: `2px solid ${p => p.theme.colors.income}`, // Bright green bottom border on hover and focus
-//     },
-// });
 export const ModalDate = styled(DesktopDatePicker)({
     '& .MuiFormControl-root': {
         width: "100%",
@@ -93,6 +76,9 @@ export const ModalDate = styled(DesktopDatePicker)({
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
         borderColor: p => p.theme.colors.income,
         // borderColor: `green`,
+    },
+    '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+        borderColor: p => p.theme.colors.income, // Замените 'green' на желаемый цвет при наведении
     },
     '& .MuiOutlinedInput-root': {
 
