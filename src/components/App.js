@@ -12,7 +12,10 @@ import {Loader} from "./Loader/Loader";
 import {Layout} from "./Layout/Layout";
 import {useAuth} from "../hooks/useAuth";
 import {fetchCurrentUser} from "../redux/auth/authOperations";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {selectLoading} from "../redux/transactions/transactionSelectors";
+import {selectIsLoading as currencyLoader} from "../redux/currency/currencySelectors";
+
 const CurrencyPage = lazy(() => import('../pages/CurrencyPage/CurrencyPage'));
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const StatisticPage = lazy(() => import('../pages/StatisticPage/StatisticPage'));
@@ -23,10 +26,12 @@ const App = () => {
     const dispath = useDispatch();
     // const isLoading = useSelector(state => state.global.isLoading)
     const {isFetching, isLoading} = useAuth();
+    const statisticLoading = useSelector(selectLoading)
+    const currencyLoading = useSelector(currencyLoader);
 
     useEffect(() =>  {dispath(fetchCurrentUser())}, [dispath])
     return <>
-    {(isLoading || isFetching) ?  <Loader/> : null}
+    {(isLoading || isFetching || statisticLoading || currencyLoading) ?  <Loader/> : null}
         <Routes>
             <Route index path="/login" element={<PublicRoute redirectTo='/' component={<LoginPage/>}/>}/>
             <Route path="/register" element={<PublicRoute redirectTo='/' component={<RegisterPage/>}/>}/>

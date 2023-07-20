@@ -8,6 +8,7 @@ import {Navigation} from "../../components/Navigation/Navigation";
 import {StatisticSelected} from "../../components/StatisticSelected/StatisticSelected";
 import {Diagram} from "../../components/Diagram/Diagram";
 import {StatisticList} from "../../components/StatisticList/StatisticList";
+import {Loader} from "../../components/Loader/Loader";
 
 const StatisticPage = () => {
     const [selectedMonth, setSelectedMonth] = useState('')
@@ -19,7 +20,7 @@ const StatisticPage = () => {
     }, [dispatch, selectedMonth, selectedYear]);
 
     const statistic = useSelector(selectStatistic);
-    if (!statistic) return <div>Loading...</div>
+    if (!statistic) return <Loader/>
     const generateRandomColors = (count) => {
         const colors = [];
         for (let i = 0; i < count; i++) {

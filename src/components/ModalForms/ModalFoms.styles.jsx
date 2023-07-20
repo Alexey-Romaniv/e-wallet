@@ -82,7 +82,6 @@ export const ModalDate = styled(DesktopDatePicker)({
     },
     '& .MuiOutlinedInput-root': {
 
-
         '& fieldset': {
             border: 'none',
             borderRadius: '0',
