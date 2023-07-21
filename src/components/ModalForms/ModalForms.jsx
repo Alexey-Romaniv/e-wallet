@@ -8,19 +8,19 @@ import {MainBtn, SecondBtn} from "../CommonComponents/Buttons.styles";
 import {FormError, InputWrapper} from "../CommonComponents/authForm.styles";
 import Select from "react-select";
 
-import {TextField} from "@mui/material";
+import TextField from "@mui/material/TextField";
 
 const incomeSchema = Yup.object().shape({
     sum: Yup.number().required('Required'),
     date: Yup.date().required('Required'),
-    comment: Yup.string().notRequired(),
+    comment: Yup.string().max(25).notRequired(),
 });
 
 const expenseSchema = Yup.object().shape({
     sum: Yup.number().required('Required'),
     date: Yup.date().required('Required'),
-    comment: Yup.string().notRequired(),
-    category: Yup.string().required('Required'),
+    comment: Yup.string().required(),
+    category: Yup.string().max(25).notRequired('Required'),
 });
 
 export const IncomeForm = ({toogleModal}) => {
@@ -30,14 +30,14 @@ export const IncomeForm = ({toogleModal}) => {
         <Formik
             initialValues={{sum: '', date: new Date(), comment: '', type: "+"}}
             validationSchema={incomeSchema}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={(values) => {
                 console.log(values.comment);
                 console.log(values)
                 dispatch(addTransaction(values))
                 toogleModal();
             }}
         >
-            {({isSubmitting, values, setFieldValue}) => (
+            {({handleChange, values, setFieldValue}) => (
                 <ModalForm>
                     <InputWrapper>
                         <ModalInput type="number" name="sum" placeholder="0.00"/>
@@ -54,7 +54,7 @@ export const IncomeForm = ({toogleModal}) => {
                     </InputWrapper>
                     <InputWrapper>
                         <ModalComment>
-                            <ModalInput as="textarea" type="text" name="comment" placeholder="Comment"/>
+                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange} placeholder="Comment"/>
                         </ModalComment>
                         <FormError name="comment" component="div"/>
                     </InputWrapper>
@@ -70,7 +70,7 @@ export const IncomeForm = ({toogleModal}) => {
     );
 };
 
-export const ExpenseForm = ({toogleModal}) => {
+export const ExpenseForm = ({toggleModal}) => {
 
     const options = [
         {value: "main", label:"Main"},
@@ -89,13 +89,13 @@ export const ExpenseForm = ({toogleModal}) => {
         <Formik
             initialValues={{category: ' ', sum: '', date: new Date(), comment: '', type: "-"}}
             validationSchema={expenseSchema}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={(values) => {
                 console.log(values)
                 dispatch(addTransaction(values));
-                toogleModal();
+                toggleModal();
             }}
         >
-            {({isSubmitting, values, setFieldValue}) => (
+            {({handleChange, values, setFieldValue}) => (
                 <ModalForm>
                     <InputWrapper>
                         <SelectInput
@@ -126,7 +126,7 @@ export const ExpenseForm = ({toogleModal}) => {
                     </InputWrapper>
                     <InputWrapper>
                         <ModalComment>
-                            <ModalInput as="textarea" type="text" name="comment" placeholder="Comment"/>
+                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange} placeholder="Comment"/>
                         </ModalComment>
                         <FormError name="comment" component="div"/>
                     </InputWrapper>
@@ -134,7 +134,7 @@ export const ExpenseForm = ({toogleModal}) => {
                         <MainBtn type="submit">
                             Add
                         </MainBtn>
-                        <SecondBtn type="button" onClick={() => toogleModal()}>Cancel</SecondBtn>
+                        <SecondBtn type="button" onClick={() => toggleModal()}>Cancel</SecondBtn>
                     </div>
                 </ModalForm>
             )}

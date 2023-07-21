@@ -9,7 +9,7 @@ export const selectBalance = createSelector(
     [selectTransactions],
     transactions => {
         const length = transactions.length;
-        return length ? transactions.reduce((acc, transaction) => acc + +(transaction.type+transaction.sum), 0) : 0;
+        return length ? transactions.reduce((acc, transaction) => acc + +(transaction.type+transaction.sum), 0).toFixed(2) : 0;
     }
 
 )

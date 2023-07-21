@@ -12,6 +12,9 @@ export const TransactionText = styled.p`
   background-color: ${p => p.theme.colors.white};
   
   padding: 12px 20px 8px;
+  
+  display: flex;
+  justify-content: space-between;
 
   font-family: ${p => p.theme.fonts.mainFont};
   font-style: normal;
@@ -32,3 +35,13 @@ export const TransactionText = styled.p`
     
   }
 `
+export const Sum = styled.span`
+  color: ${p => (p.type === '+' ? p.theme.colors.income : p.theme.colors.expense)};
+`;
+
+export const TransactionComment = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Дополнительные стили для комментария */
+`;

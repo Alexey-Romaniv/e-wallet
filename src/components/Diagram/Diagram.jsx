@@ -3,6 +3,7 @@ import 'chart.js/auto';
 import {Doughnut} from 'react-chartjs-2';
 import {useSelector} from "react-redux";
 import {selectBalance} from "../../redux/transactions/transactionSelectors";
+import {DiagramBalance, DiagramWrapper} from "./Diagram.styles";
 
 export const Diagram = ({data}) => {
 
@@ -40,13 +41,8 @@ export const Diagram = ({data}) => {
         },
     };
 
-    return <div style={{position: "relative", display: "flex", justifyContent: "center"}}>
-            <span style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)"
-            }}>{balance}</span>
+    return <DiagramWrapper>
+        <DiagramBalance>$ {balance}</DiagramBalance>
         <Doughnut data={dataDoughnut} options={options}/>
-    </div>;
+    </DiagramWrapper>;
 }

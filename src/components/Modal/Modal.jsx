@@ -14,7 +14,7 @@ export const Modal = ({toggleModal}) => {
                     <CloseButton onClick={toggleModal}>&times;</CloseButton>
                     <ModalTitle>Add transaction</ModalTitle>
                     <ModalToogle type={type} setType={setType}/>
-                    {type ? <IncomeForm toogleModal={toggleModal}/> : <ExpenseForm toogleModal={toggleModal}/>}
+                    {type ? <IncomeForm toogleModal={toggleModal}/> : <ExpenseForm toggleModal={toggleModal}/>}
                 </ModalContent>
             </ModalWrapper>
         </>
