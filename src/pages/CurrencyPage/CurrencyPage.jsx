@@ -7,16 +7,17 @@ import {fetchCurrency} from "../../redux/currency/currencyOperations";
 import {CurrencyInfo} from "../../components/CurrencyInfo/CurrencyInfo";
 
 const CurrencyPage = () => {
+    const isMobileScreen = window.innerWidth <= 768;
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchCurrency())
     }, [dispatch])
     const currency = useSelector(selectCurrency)
-    return <Container>
+    return isMobileScreen ? <Container>
         <Navigation/>
         <CurrencyInfo currency={currency}/>
-    </Container>;
+    </Container> : null;
 };
 
 export default CurrencyPage;

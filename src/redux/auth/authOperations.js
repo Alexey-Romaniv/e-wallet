@@ -1,72 +1,78 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 axios.defaults.baseURL = "https://e-wallet-backend.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 
 const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = "";
-  },
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = "";
+    },
 };
 
 export const registration = createAsyncThunk(
-  "auth/registerUser",
-  async (userData, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post("/users/register", userData);
-        console.log(data)
-      token.set(data.token);
-      return data;
-    } catch (e) {
-      rejectWithValue(e.message);
+    "auth/registerUser",
+    async (userData, {rejectWithValue}) => {
+        try {
+            const response = await axios.post("/users/register", userData);
+            const {data} = response
+            token.set(data.token);
+            return data;
+        } catch (e) {
+            toast.error(e.response.data.message)
+            return rejectWithValue(e.response.data.message); // Возвращаем данные ошибки, полученные от сервера
+        }
     }
-  }
 );
 
 export const login = createAsyncThunk(
-  "auth/loginUser",
-  async (userData, { rejectWithValue }) => {
-    try {
-      const { data } = await axios.post("/users/login", userData);
-        console.log(data.token)
-      token.set(data.token);
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
+    "auth/loginUser",
+    async (userData, {rejectWithValue}) => {
+        try {
+            const response = await axios.post("/users/login", userData);
+            const {data} = response;
+            console.log(data.token)
+            token.set(data.token);
+            return data;
+        } catch (e) {
+            toast.error(e.response.data.message)
+            return rejectWithValue(e.response.data.message); // Возвращаем данные ошибки, полученные от сервера        }
+        }
     }
-  }
 );
 
 export const logout = createAsyncThunk(
-  "auth/logoutUser",
-  async (_, { rejectWithValue }) => {
-    try {
-      await axios.post("/users/logout");
-      token.unset();
-    } catch (e) {
-      rejectWithValue(e.message);
+    "auth/logoutUser",
+    async (_, {rejectWithValue}) => {
+        try {
+            await axios.post("/users/logout");
+            token.unset();
+        } catch (e) {
+            toast.error(e.response.data.message)
+            return rejectWithValue(e.response.data.message); // Возвращаем данные ошибки, полученные от сервера        }
+        }
     }
-  }
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  "auth/refreshUser",
-  async (_, { rejectWithValue, getState }) => {
-    const tokenFromStorage = getState().auth.token;
+    "auth/refreshUser",
+    async (_, {rejectWithValue, getState}) => {
+        const tokenFromStorage = getState().auth.token;
 
-    if (!tokenFromStorage) {
-      return rejectWithValue("");
+        if (!tokenFromStorage) {
+            return rejectWithValue("");
+        }
+        token.set(tokenFromStorage);
+        try {
+            const response = await axios("/users/current");
+            return response.data;
+        } catch (e) {
+            return rejectWithValue(e.response.data.message);
+        }
+
     }
-    token.set(tokenFromStorage);
-    try {
-      const { data } = await axios("/users/current");
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
 );

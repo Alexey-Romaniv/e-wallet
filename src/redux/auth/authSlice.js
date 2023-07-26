@@ -31,6 +31,8 @@ const authPersistConfig = {
 export const handlePending = (state) => {
   state.isLoading = true;
   state.error = null;
+  console.log(state.error);
+  console.log("111")
 };
 
 export const handleRejected = (state, { payload }) => {
@@ -46,7 +48,10 @@ const authSlice = createSlice({
       .addCase(registration.pending, handlePending)
       .addCase(login.pending, handlePending)
       .addCase(logout.pending, handlePending)
-      .addCase(registration.rejected, handleRejected)
+      .addCase(registration.rejected, (state, {payload}) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       .addCase(login.rejected, handleRejected)
       .addCase(logout.rejected, handleRejected)
       .addCase(registration.fulfilled, (state, { payload }) => {

@@ -23,7 +23,7 @@ import logo from "../../assets/icons/logo.svg";
 const RegisterSchema = Yup.object().shape({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
-    password: Yup.string().required("Required"),
+    password: Yup.string().min(6).required("Required"),
     confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Required"),
@@ -38,14 +38,19 @@ export const RegisterForm = () => {
             <AuthWrapper>
                 <LogoText><LogoImg src={logo}></LogoImg>Wallet</LogoText>
                 <Formik
-                    initialValues={{name: "", email: "", password: ""}}
+                    initialValues={{name: "", email: "", password: "", confirmPassword: ''}}
                     validationSchema={RegisterSchema}
                     onSubmit={async (values, {setSubmitting}) => {
+                        try {
                         const {confirmPassword, ...result} = values;
                         console.log(result)
-                        dispatch(await registration(result));
+                         await dispatch(await registration(result));
                         setSubmitting(false);
-                        toast.success("Registration successful");
+
+                        } catch (e) {
+                            console.log(e)
+                            toast.error("error");
+                        }
 
                     }}
                 >

@@ -25,8 +25,15 @@ export const Diagram = ({data}) => {
                     borderJoinStyle: 'miter'
                 },
             ],
-
+            options: {
+                responsive: true,
+                cutoutPercentage: 50, // Задает размер "пустоты" внутри доната (0-100)
+                legend: {
+                    display: false, // Убираем легенду, но можно настроить её, если нужно
+                },
+            },
         }
+
 
     }
 
@@ -34,6 +41,8 @@ export const Diagram = ({data}) => {
     console.log(dataDoughnut)
 
     const options = {
+        // responsive: true,
+        cutoutPercentage: 100,
         plugins: {
             legend: {
                 display: false, // Скрыть список

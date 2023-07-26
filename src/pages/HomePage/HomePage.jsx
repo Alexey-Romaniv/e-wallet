@@ -10,23 +10,33 @@ import {ShowModalBtn} from "../../components/CommonComponents/Buttons.styles";
 
 import {AiOutlinePlus} from "react-icons/ai";
 
-const HomePage = () => {
+import {DesktopInfoBar} from "../../components/DesktopInfoBar/DesktopInfoBar";
 
+
+const HomePage = () => {
+    const isMobileScreen = window.innerWidth <= 768;
     const [showModal, setShowModal] = useState(false);
 
     const toggleModal = () => {
         setShowModal(!showModal);
     };
 
-    const dispatch =  useDispatch();
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchTransactions());
     }, [dispatch]);
+
     return <Container>
-        <Navigation/>
-        <BalanceInfo/>
-        <TransactionList/>
-        <ShowModalBtn  onClick={toggleModal}>
+        {isMobileScreen ?
+            <div>
+                <Navigation/>
+                <BalanceInfo/>
+            </div> :
+            <DesktopInfoBar/>
+        }
+
+            <TransactionList/>
+        <ShowModalBtn onClick={toggleModal}>
             <AiOutlinePlus size={30} color={"white"}/>
         </ShowModalBtn>
         {showModal && <Modal toggleModal={toggleModal}/>}

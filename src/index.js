@@ -25,8 +25,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
                     <BrowserRouter>
-                        <GlobalStyles/>
                         <App/>
+                        <GlobalStyles/>
                         <ToastContainer transition={Zoom} autoClose={3000} pauseOnHover={true} draggable={true}/>
                     </BrowserRouter>
                 </PersistGate>

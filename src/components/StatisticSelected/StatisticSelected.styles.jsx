@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Select from "react-select";
 
 export const SelectDate = styled(Select)`
+  flex: 1;
   .Select__control {
     height: 50px;
     width: 100%;
@@ -82,4 +83,9 @@ export const SelectContainer = styled.div`
 display: flex;
   flex-direction: column;
   gap: 20px;
+  
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+    flex-direction: row;
+    }
 `

@@ -1,6 +1,7 @@
 import React from "react";
 import {CurrencyBody, CurrencyHeader, CurrencyTable} from "./CurrencyInfo.styles";
 
+
 export const CurrencyInfo = ({currency}) => {
 
 return <CurrencyTable>

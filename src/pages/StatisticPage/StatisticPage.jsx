@@ -3,14 +3,17 @@ import 'chart.js/auto';
 import {Container} from "../../components/CommonComponents/Container.styles";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchStatistic} from "../../redux/transactions/transactionsOperations";
-import { selectStatistic} from "../../redux/transactions/transactionSelectors";
+import {selectStatistic} from "../../redux/transactions/transactionSelectors";
 import {Navigation} from "../../components/Navigation/Navigation";
 import {StatisticSelected} from "../../components/StatisticSelected/StatisticSelected";
 import {Diagram} from "../../components/Diagram/Diagram";
 import {StatisticList} from "../../components/StatisticList/StatisticList";
 import {Loader} from "../../components/Loader/Loader";
+import {DesktopInfoBar} from "../../components/DesktopInfoBar/DesktopInfoBar";
+import { StatisticFlexWrapper, StatisticTitle} from "../../components/CommonComponents/Pages.styles";
 
 const StatisticPage = () => {
+    const isMobileScreen = window.innerWidth <= 768;
     const [selectedMonth, setSelectedMonth] = useState('')
     const [selectedYear, setSelectedYear] = useState('')
 
@@ -43,10 +46,20 @@ const StatisticPage = () => {
     })
 
     return <Container>
-        <Navigation/>
-        <Diagram data={combinedArray} />
-        <StatisticSelected setMonth={setSelectedMonth} setYear={setSelectedYear}/>
-        <StatisticList statistic={statistic} list={combinedArray}/>
+        {isMobileScreen ?
+            <Navigation/> :
+            <DesktopInfoBar/>
+        }
+        <StatisticFlexWrapper>
+            <div>
+                <StatisticTitle>Statistic</StatisticTitle>
+                <Diagram data={combinedArray}/>
+            </div>
+            <div>
+                <StatisticSelected setMonth={setSelectedMonth} setYear={setSelectedYear}/>
+                <StatisticList statistic={statistic} list={combinedArray}/>
+            </div>
+        </StatisticFlexWrapper>
     </Container>
 }
 export default StatisticPage;

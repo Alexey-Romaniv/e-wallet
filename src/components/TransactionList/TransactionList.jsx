@@ -1,12 +1,23 @@
 import {useSelector} from "react-redux";
 import {Transaction} from "../Transaction/Transaction";
 import {selectTransactions} from "../../redux/transactions/transactionSelectors";
-import {TransactionItem, TransactionList as List} from "./TransactionList.styles";
+import {TransactionHeader, TransactionItem, TransactionList as List, TransactionTitle} from "./TransactionList.styles";
 
 export const TransactionList = () => {
-  const transactions = useSelector(selectTransactions);
+    const transactions = useSelector(selectTransactions);
 
-  return <List>
-      {transactions.map((info) => <TransactionItem key={info._id} ><Transaction id={info._id} info={info} type={info.type}/></TransactionItem>)}
-  </List>
+    return <>
+        <TransactionHeader>
+            <TransactionTitle>Date</TransactionTitle>
+            <TransactionTitle>Type</TransactionTitle>
+            <TransactionTitle>Category</TransactionTitle>
+            <TransactionTitle>Comment</TransactionTitle>
+            <TransactionTitle>Sum</TransactionTitle>
+            <TransactionTitle>Balance</TransactionTitle>
+        </TransactionHeader>
+        <List>
+            {transactions.map((info) => <TransactionItem key={info._id}><Transaction id={info._id} info={info}
+                                                                                     type={info.type}/></TransactionItem>)}
+        </List>
+    </>
 }

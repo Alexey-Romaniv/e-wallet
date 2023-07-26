@@ -1,4 +1,4 @@
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {login} from "../../redux/auth/authOperations";
 import {MainBtn, SecondBtn} from "../CommonComponents/Buttons.styles";
@@ -17,13 +17,16 @@ import {
 } from "../CommonComponents/authForm.styles";
 import {Container} from "../CommonComponents/Container.styles";
 import {LogoImg, LogoText} from "../CommonComponents/Logo.styles";
+import {selectError} from "../../redux/auth/authSelectors";
 
 export const LoginForm = () => {
     const dispatch = useDispatch();
 
+    const errorMessage = useSelector(selectError)
+
     const LoginSchema = Yup.object().shape({
         email: Yup.string().email("Invalid email").required("Required"),
-        password: Yup.string().required("Required"),
+        password: Yup.string().min(6).required("Required"),
     });
 
 
@@ -35,8 +38,17 @@ export const LoginForm = () => {
                     initialValues={{email: "", password: ""}}
                     validationSchema={LoginSchema}
                     onSubmit={(values, {resetForm}) => {
+                        try {
                         dispatch(login(values))
+
+                        } catch (e){
+                            console.log(errorMessage)
+                            console.log(e.message)
+                            console.log("111")
+                        } finally {
+
                         resetForm();
+                        }
                     }}
                 >
                     {({isSubmitting}) => (
