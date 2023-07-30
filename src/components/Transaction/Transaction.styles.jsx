@@ -27,11 +27,20 @@ export const Sum = styled.span`
   color: ${p => (p.type === '+' ? p.theme.colors.income : p.theme.colors.expense)};
 `;
 
-export const TransactionComment = styled.span`
+export const TransactionComment = styled(TransactionText)`
+  display: block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%; /* Добавляем ограничение ширины */
+
   /* Дополнительные стили для комментария */
+  
+  @media screen and (min-width: 768px){
+    font-size: 16px; /* Пример изменения шрифта для комментария на планшетной версии */
+    padding-right: 10px; /* Пример изменения отступа справа для комментария на планшетной версии */
+
+  }
 `;
 
 export const TransactionRow = styled.div`
@@ -48,6 +57,8 @@ export const TransactionRow = styled.div`
     & div:last-child{
       justify-content: flex-end;
     }
+    
+
     & div:nth-child(2),
     & div:nth-child(5){
       justify-content: center;
@@ -85,13 +96,7 @@ export const TransactionData = styled.div`
       border-left: none;
     }
     &:before {
-      bottom: 0;
-      top: auto;
-      width: 100%;
-      height: 1px;
-
-      background-color: #DCDCDF;
-      filter: drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.60));
+      display: none;
     }
   }
 `;
