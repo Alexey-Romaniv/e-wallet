@@ -11,6 +11,7 @@ import {ShowModalBtn} from "../../components/CommonComponents/Buttons.styles";
 import {AiOutlinePlus} from "react-icons/ai";
 
 import {DesktopInfoBar} from "../../components/DesktopInfoBar/DesktopInfoBar";
+import {DesktopWrapper} from "../../components/CommonComponents/Pages.styles";
 
 
 const HomePage = () => {
@@ -27,15 +28,19 @@ const HomePage = () => {
     }, [dispatch]);
 
     return <Container>
-        {isMobileScreen ?
+        <DesktopWrapper>
+            {isMobileScreen ?
+                <div>
+                    <Navigation/>
+                    <BalanceInfo/>
+                </div> :
+                <DesktopInfoBar/>
+            }
             <div>
-                <Navigation/>
-                <BalanceInfo/>
-            </div> :
-            <DesktopInfoBar/>
-        }
+                <TransactionList style={{overflowY:'auto', height:'500px'}}/>
 
-            <TransactionList/>
+            </div>
+        </DesktopWrapper>
         <ShowModalBtn onClick={toggleModal}>
             <AiOutlinePlus size={30} color={"white"}/>
         </ShowModalBtn>

@@ -2,16 +2,19 @@ import styled from 'styled-components';
 import bgBlue from '../../assets/icons/bg-blue.svg'
 import bgRed from '../../assets/icons/bg-red.svg'
 
+
 export const PageWrapper = styled.div`
+  
+    min-height: 100vh;
   width: 100%;
   height: 100%;
 
   @media screen and (min-width: 768px) {
-  position: relative;
-      background: url(${bgBlue}), url("${bgRed}");
-      background-repeat: no-repeat;
-      background-position: 0 100%, 100% 0;
-  z-index: 0;
+    position: relative;
+    background: url(${bgBlue}), url("${bgRed}");
+    background-repeat: no-repeat;
+    background-position: 0 100%, 100% 0;
+    z-index: 0;
     &:before {
       content: '';
       position: absolute;
@@ -25,11 +28,40 @@ export const PageWrapper = styled.div`
   }
 `;
 
+
+export const DesktopWrapper = styled.div`
+  
+  @media screen and (min-width: 1280px){
+display: flex;
+  //justify-content: space-between; 
+    gap: 138px;
+  }
+`;
+
 export const MainFlexWrapper = styled.div`
   display: flex;
   gap: 32px;
 
   margin-bottom: 20px;
+
+  @media screen and (min-width: 1280px){
+    position: relative;
+    flex-direction: column;
+    max-width: 395px;
+    width: 100%;
+    flex-grow: 2;
+    
+    &:before{
+      content: '';
+      position: absolute;
+      width: 1px;
+      top: -120px;
+      min-height: 100vh;
+
+      right: -69px;
+      background: ${p => p.theme.colors.mainBackground};
+      filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.60)) drop-shadow(-1px 0px 0px rgba(0, 0, 0, 0.05));    }
+  }
 `;
 
 export const CurrencyWrapper = styled.div`
@@ -40,6 +72,11 @@ display: none;
   @media screen and (min-width: 768px){
     display: block;
   }
+  
+  @media screen and (min-width: 1280px){
+    align-items: stretch;
+    align-self: stretch;
+  }
 `;
 
 export const HomeInfoWrapper = styled.div`
@@ -48,6 +85,12 @@ flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
+  @media screen and (min-width: 1280px) {
+    justify-content: flex-start;
+    gap: 28px;
+    flex: 0;
+  }
 `
 
 export const StatisticTitle = styled.h2`
@@ -75,6 +118,10 @@ export const StatisticFlexWrapper = styled.div`
     flex: 1;
   }
   
+  @media screen and (min-width: 1280px){
+    flex-grow: 1;
+  }
 }
+
 `;
 

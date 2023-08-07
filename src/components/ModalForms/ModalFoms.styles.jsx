@@ -66,9 +66,13 @@ export const ModalDate = styled(DesktopDatePicker)({
     '& .MuiFormControl-root': {
         width: "100%",
     },
+    '& .MuiInputBase-root': {
+        alignItems:'center',
+    },
     '& .MuiInputBase-input': {
         border: 'none',
         borderRadius: '0',
+        padding: '0 11px 10px 20px'
     },
     '& .MuiInputBase-input::placeholder': {
         color: 'blue', // Изменить цвет плейсхолдера
@@ -89,9 +93,11 @@ export const ModalDate = styled(DesktopDatePicker)({
             borderBottom: `2px solid`, // Серая линия снизу
             borderColor: p => p.theme.colors.secondaryText,
         },
-
-
     },
+    '& .MuiButtonBase-root': {
+        paddingBottom:'15px',
+        color: '#4A56E2',
+    }
 });
 export const ModalComment = styled.div`
    & textarea{
@@ -125,6 +131,10 @@ export const ModalComment = styled.div`
     border-bottom: 2px solid ${p => p.theme.colors.income} ;
   
   }
+     
+     @media screen and (min-width: 768px){
+       min-height: 0;
+     }
   }
 `
 

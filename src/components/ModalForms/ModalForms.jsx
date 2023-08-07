@@ -9,6 +9,7 @@ import {FormError, InputWrapper} from "../CommonComponents/authForm.styles";
 import Select from "react-select";
 
 import TextField from "@mui/material/TextField";
+import {DesktopModalFlex, ModalButtonsWrapper} from "../Modal/Modal.styles";
 
 const incomeSchema = Yup.object().shape({
     sum: Yup.number().required('Required'),
@@ -39,31 +40,34 @@ export const IncomeForm = ({toogleModal}) => {
         >
             {({handleChange, values, setFieldValue}) => (
                 <ModalForm>
-                    <InputWrapper>
-                        <ModalInput type="number" name="sum" placeholder="0.00"/>
-                        <FormError name="sum" component="div"/>
-                    </InputWrapper>
-                    <InputWrapper>
-                        <ModalDate
-                            name="date"
-                            value={values.date}
-                            onChange={(date) => setFieldValue("date", date)}
-                            textField={(params) => <TextField {...params} />}
-                        />
-                        <FormError name="date" component="div" />
-                    </InputWrapper>
+                    <DesktopModalFlex>
+                        <InputWrapper>
+                            <ModalInput type="number" name="sum" placeholder="0.00"/>
+                            <FormError name="sum" component="div"/>
+                        </InputWrapper>
+                        <InputWrapper>
+                            <ModalDate
+                                name="date"
+                                value={values.date}
+                                onChange={(date) => setFieldValue("date", date)}
+                                textField={(params) => <TextField {...params} />}
+                            />
+                            <FormError name="date" component="div"/>
+                        </InputWrapper>
+                    </DesktopModalFlex>
                     <InputWrapper>
                         <ModalComment>
-                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange} placeholder="Comment"/>
+                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange}
+                                        placeholder="Comment"/>
                         </ModalComment>
                         <FormError name="comment" component="div"/>
                     </InputWrapper>
-                    <div>
+                    <ModalButtonsWrapper>
                         <MainBtn type="submit">
                             Add
                         </MainBtn>
                         <SecondBtn type="button" onClick={() => toogleModal()}>Cancel</SecondBtn>
-                    </div>
+                    </ModalButtonsWrapper>
                 </ModalForm>
             )}
         </Formik>
@@ -73,14 +77,14 @@ export const IncomeForm = ({toogleModal}) => {
 export const ExpenseForm = ({toggleModal}) => {
 
     const options = [
-        {value: "main", label:"Main"},
-        {value: "food", label:"Food"},
-        {value: "auto", label:"Auto"},
-        {value: "development", label:"Development"},
-        {value: "children", label:"Children"},
-        {value: "house", label:"House"},
-        {value: "education", label:"Education"},
-        {value: "reset", label:"Reset"},
+        {value: "main", label: "Main"},
+        {value: "food", label: "Food"},
+        {value: "auto", label: "Auto"},
+        {value: "development", label: "Development"},
+        {value: "children", label: "Children"},
+        {value: "house", label: "House"},
+        {value: "education", label: "Education"},
+        {value: "reset", label: "Reset"},
     ]
 
     const dispatch = useDispatch();
@@ -104,38 +108,41 @@ export const ExpenseForm = ({toggleModal}) => {
                             as={Select}
                             options={options}
                             placeholder="Select a category"
-                            onChange={(selectedOption) =>{
+                            onChange={(selectedOption) => {
                                 setFieldValue("category", selectedOption.value);
                             }
                             }
                         />
                         <FormError name="category" component="div"/>
                     </InputWrapper>
-                    <InputWrapper>
-                        <ModalInput type="number" name="sum" placeholder="0.00"/>
-                        <FormError name="sum" component="div"/>
-                    </InputWrapper>
-                    <InputWrapper>
-                        <ModalDate
-                            name="date"
-                            value={values.date}
-                            onChange={(date) => setFieldValue("date", date)}
-                            textField={(params) => <TextField {...params} />}
-                        />
-                        <FormError name="date" component="div" />
-                    </InputWrapper>
+                    <DesktopModalFlex>
+                        <InputWrapper>
+                            <ModalInput type="number" name="sum" placeholder="0.00"/>
+                            <FormError name="sum" component="div"/>
+                        </InputWrapper>
+                        <InputWrapper>
+                            <ModalDate
+                                name="date"
+                                value={values.date}
+                                onChange={(date) => setFieldValue("date", date)}
+                                textField={(params) => <TextField {...params} />}
+                            />
+                            <FormError name="date" component="div"/>
+                        </InputWrapper>
+                    </DesktopModalFlex>
                     <InputWrapper>
                         <ModalComment>
-                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange} placeholder="Comment"/>
+                            <ModalInput as="textarea" type="text" name="comment" onChange={handleChange}
+                                        placeholder="Comment"/>
                         </ModalComment>
                         <FormError name="comment" component="div"/>
                     </InputWrapper>
-                    <div>
+                    <ModalButtonsWrapper>
                         <MainBtn type="submit">
                             Add
                         </MainBtn>
                         <SecondBtn type="button" onClick={() => toggleModal()}>Cancel</SecondBtn>
-                    </div>
+                    </ModalButtonsWrapper>
                 </ModalForm>
             )}
         </Formik>

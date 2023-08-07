@@ -10,7 +10,7 @@ import {Diagram} from "../../components/Diagram/Diagram";
 import {StatisticList} from "../../components/StatisticList/StatisticList";
 import {Loader} from "../../components/Loader/Loader";
 import {DesktopInfoBar} from "../../components/DesktopInfoBar/DesktopInfoBar";
-import { StatisticFlexWrapper, StatisticTitle} from "../../components/CommonComponents/Pages.styles";
+import {DesktopWrapper, StatisticFlexWrapper, StatisticTitle} from "../../components/CommonComponents/Pages.styles";
 
 const StatisticPage = () => {
     const isMobileScreen = window.innerWidth <= 768;
@@ -27,9 +27,7 @@ const StatisticPage = () => {
     const generateRandomColors = (count) => {
         const colors = [];
         for (let i = 0; i < count; i++) {
-            const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
-                Math.random() * 256
-            )}, ${Math.floor(Math.random() * 256)}, 0.7)`;
+            const color = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.7)`;
             colors.push(color);
         }
         return colors;
@@ -39,27 +37,24 @@ const StatisticPage = () => {
     const backgroundColors = generateRandomColors(statisticLength);
     const combinedArray = Object.values(statistic.categories).map((el, index) => {
         return {
-            name: Object.keys(statistic.categories)[index],
-            sum: el,
-            color: backgroundColors[index]
+            name: Object.keys(statistic.categories)[index], sum: el, color: backgroundColors[index]
         }
     })
 
     return <Container>
-        {isMobileScreen ?
-            <Navigation/> :
-            <DesktopInfoBar/>
-        }
-        <StatisticFlexWrapper>
-            <div>
-                <StatisticTitle>Statistic</StatisticTitle>
-                <Diagram data={combinedArray}/>
-            </div>
-            <div>
-                <StatisticSelected setMonth={setSelectedMonth} setYear={setSelectedYear}/>
-                <StatisticList statistic={statistic} list={combinedArray}/>
-            </div>
-        </StatisticFlexWrapper>
+            <DesktopWrapper>
+                {isMobileScreen ? <Navigation/> : <DesktopInfoBar/>}
+                <StatisticFlexWrapper>
+                    <div>
+                        <StatisticTitle>Statistic</StatisticTitle>
+                        <Diagram data={combinedArray}/>
+                    </div>
+                    <div>
+                        <StatisticSelected setMonth={setSelectedMonth} setYear={setSelectedYear}/>
+                        <StatisticList statistic={statistic} list={combinedArray}/>
+                    </div>
+                </StatisticFlexWrapper>
+            </DesktopWrapper>
     </Container>
 }
 export default StatisticPage;

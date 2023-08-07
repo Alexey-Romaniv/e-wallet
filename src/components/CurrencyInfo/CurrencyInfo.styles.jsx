@@ -3,7 +3,8 @@ import backgroundImage from '../../assets/images/currencyBackground.png'
 
 export const CurrencyTable = styled.table`
   width: 100%;
-
+  height: 100%;
+  
   border-radius: 30px;
   background-color: #4A56E2;
   border-spacing: 0;

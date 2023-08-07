@@ -3,7 +3,7 @@ import {TransactionText} from "../Transaction/Transaction.styles";
 
 
 export const TransactionList = styled.ul`
-  margin-top: 32px;
+
 
   max-width: 100%;
   display: flex;
@@ -12,8 +12,12 @@ export const TransactionList = styled.ul`
   gap: 12px;
   
   @media screen and  (min-width: 768px){
-    margin-top: 0;
     gap: 0;
+  }
+  
+  @media screen and (min-width: 1280px){
+    max-width: 715px;
+    flex-grow: 1;
   }
 `;
 export const TransactionItem = styled.li`
@@ -84,4 +88,30 @@ display: flex;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-`
+`;
+
+export const TransactionListWrapper = styled.div`
+  margin-top: 32px;
+  border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  overflow-y: auto;
+  max-height: 480px;
+
+  &::-webkit-scrollbar {
+    width: 6px; /* Ширина скролла */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${p => p.theme.colors.income}; /* Цвет полосы скролла */
+    border-radius: 3px; /* Закругление углов */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* Цвет фона скролла */
+  }
+`;

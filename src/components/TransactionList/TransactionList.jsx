@@ -1,7 +1,13 @@
 import {useSelector} from "react-redux";
 import {Transaction} from "../Transaction/Transaction";
 import {selectTransactions} from "../../redux/transactions/transactionSelectors";
-import {TransactionHeader, TransactionItem, TransactionList as List, TransactionTitle} from "./TransactionList.styles";
+import {
+    TransactionHeader,
+    TransactionItem,
+    TransactionList as List,
+    TransactionListWrapper,
+    TransactionTitle
+} from "./TransactionList.styles";
 
 export const TransactionList = () => {
     const transactions = useSelector(selectTransactions);
@@ -15,9 +21,11 @@ export const TransactionList = () => {
             <TransactionTitle>Sum</TransactionTitle>
             <TransactionTitle>Balance</TransactionTitle>
         </TransactionHeader>
-        <List>
+        <TransactionListWrapper>
+        <List style={{overflowY: 'auto'}}>
             {transactions.map((info) => <TransactionItem key={info._id}><Transaction id={info._id} info={info}
                                                                                      type={info.type}/></TransactionItem>)}
         </List>
+        </TransactionListWrapper>
     </>
 }

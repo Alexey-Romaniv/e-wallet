@@ -7,15 +7,13 @@ import * as Yup from 'yup';
 import sprite from '../../assets/icons/InlineSprite.svg';
 import logo from '../../assets/icons/logo.svg';
 import {
-    AuthBackground,
-    AuthWrapper,
+     AuthFormWrapper,
     FormError,
     FormWrapper,
     Input,
     InputWrapper,
     Svg
 } from "../CommonComponents/authForm.styles";
-import {Container} from "../CommonComponents/Container.styles";
 import {LogoImg, LogoText} from "../CommonComponents/Logo.styles";
 import {selectError} from "../../redux/auth/authSelectors";
 
@@ -30,9 +28,7 @@ export const LoginForm = () => {
     });
 
 
-    return (<AuthBackground>
-        <Container>
-            <AuthWrapper>
+    return (<AuthFormWrapper>
                 <LogoText><LogoImg src={logo}></LogoImg>Wallet</LogoText>
                 <Formik
                     initialValues={{email: "", password: ""}}
@@ -76,7 +72,5 @@ export const LoginForm = () => {
                 <NavLink to='/register'>
                     <SecondBtn>Register</SecondBtn>
                 </NavLink>
-            </AuthWrapper>
-        </Container>
-    </AuthBackground>)
+    </AuthFormWrapper>)
 }

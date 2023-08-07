@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {ErrorMessage, Field, Form} from "formik";
+import {PageWrapper} from "./Pages.styles";
 
 
 export const AuthBackground = styled.div`
@@ -7,13 +8,57 @@ background: ${p => p.theme.colors.white};
   width: 100vw;
   height: 100vh;
 `;
-export const AuthWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%);
+export const AuthWrapper = styled(PageWrapper)`
+  @media screen and (max-width: 767px) {
+    background: ${p => p.theme.colors.white};
+  }
+  
+  @media screen and (min-width: 768px) {
 
-`
+    &:before {
+      backdrop-filter: blur(0);
+    }
+  }
+`;
+export const AuthFlexWrapper = styled.div`
+
+    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  
+  & button{
+    margin-inline:auto;
+  }
+  
+  @media screen and (min-width: 768px){
+    justify-content: flex-start;
+    padding-top: 60px;
+  }
+  
+  @media screen and (min-width: 1280px){
+    margin-left: 50px;
+    
+    flex-direction: row;
+    padding-top: 0;
+    justify-content: space-around;
+    
+    &:before{
+      content: '';
+      position: absolute;
+      z-index: -1;
+      right: -10%;
+      width: 70%;
+      height: 100%;
+    
+      
+      background: rgba(255, 255, 255, 0.40);
+      backdrop-filter: blur(25px);
+    }
+  }
+`;
 export const FormWrapper = styled(Form)`
 display: flex;
   flex-direction: column;
@@ -42,8 +87,10 @@ background-color: transparent;
   &:focus ~ svg{
     //fill: #000000;
     transform: scale(1.2);
-
-
+  }
+  
+  @media screen and (min-width: 768px){
+    width: 410px;
   }
   
 `;
@@ -69,3 +116,15 @@ export const FormError = styled(ErrorMessage)`
   line-height: 1.3;
   color: red;
 `
+
+export const AuthFormWrapper = styled.div`
+    
+    @media screen and (min-width: 768px){
+      border-radius: 20px;
+      background-color: ${p => p.theme.colors.white};
+      
+      padding: 40px 60px 60px;
+
+      margin: 0 auto;
+    }
+`;
