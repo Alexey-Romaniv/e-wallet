@@ -36,10 +36,7 @@ const HomePage = () => {
                 </div> :
                 <DesktopInfoBar/>
             }
-            <div>
-                <TransactionList style={{overflowY:'auto', height:'500px'}}/>
-
-            </div>
+                <TransactionList/>
         </DesktopWrapper>
         <ShowModalBtn onClick={toggleModal}>
             <AiOutlinePlus size={30} color={"white"}/>

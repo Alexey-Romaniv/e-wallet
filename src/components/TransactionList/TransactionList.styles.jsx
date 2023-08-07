@@ -115,3 +115,16 @@ export const TransactionListWrapper = styled.div`
     background-color: transparent; /* Цвет фона скролла */
   }
 `;
+
+export const TransactionTableWrapper = styled.div`
+  width: 100%;
+`;
+
+export const EmptyListText = styled.p`
+  font-weight: 700;
+  font-size: 20px;
+  line-height:normal;
+  margin-top: 15px;
+  
+  text-align: center;
+`;

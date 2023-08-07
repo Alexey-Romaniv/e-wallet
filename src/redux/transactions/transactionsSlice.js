@@ -39,7 +39,7 @@ const transactionsSlice = createSlice({
         }).addCase(addTransaction.fulfilled, (state, {payload}) =>{
             state.isLoading = false;
             state.error = null;
-            state.transactions.push(payload)
+            state.transactions.unshift(payload)
         }).addCase(deleteTransaction.fulfilled, (state, {payload}) => {
             state.isLoading = false;
             state.error = null;
