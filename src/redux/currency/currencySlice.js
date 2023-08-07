@@ -14,7 +14,7 @@ const initialState = {
 const currencyPersistConfig = {
     key: "currency",
     storage,
-    expires: 86400,
+    expires: 21600,
     whitelist: ["currency"]
 };
 const currencySlice = createSlice({
