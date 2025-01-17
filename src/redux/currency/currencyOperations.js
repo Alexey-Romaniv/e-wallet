@@ -11,12 +11,12 @@ export const fetchCurrency = createAsyncThunk(
                 return currencyFromStorage;
             }
             let currencies = [];
-            const valuta = ['USD', 'EUR', 'PLN']
+            const valuta = [{base: 'USD', quote: 'PLN'}, {base: 'UER', quote: 'PLN'}, {base: 'ETH', quote: 'PLN'}]
             for (let i = 0; i < valuta.length ; i++) {
 
-            const response = await axios.get(`https://rest.coinapi.io/v1/exchangerate/${valuta[i]}/UAH`, {
+            const response = await axios.get(`https://rest.coinapi.io/v1/exchangerate/${valuta[i].base}/${valuta[i].quote}`, {
                 headers: {
-                    "X-CoinAPI-Key": "831F3FFF-5A48-49D6-81FB-7B491AA8A272"
+                    "X-CoinAPI-Key": "a8e44055-3278-4e99-bc41-4b25819e8cf0"
                 }
             })
                 const {data} = response;
