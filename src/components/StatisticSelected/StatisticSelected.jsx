@@ -16,13 +16,11 @@ export const StatisticSelected = ({setMonth, setYear}) => {
         {value: "11", label: "November"},
         {value: "12", label: "December"},
     ];
-    const years = [
-        {value: "2023", label: "2023"},
-        {value: "2022", label: "2022"},
-        {value: "2021", label: "2021"},
-        {value: "2020", label: "2020"},
-    ];
-
+    const currentYear = new Date().getFullYear();
+    const years = Array.from({ length: currentYear - 2023 }, (_, i) => {
+        const year = currentYear - i;
+        return { value: String(year), label: String(year) };
+    });
 
     const handleChangeMonth = (date) => {
       setMonth(date?.value || '')
